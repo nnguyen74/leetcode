@@ -32,12 +32,10 @@ class Solution:
             while orange_queue:
                 rotten_orange = orange_queue.popleft()
                 fresh_oranges = get_fresh_orange_neighbors(rotten_orange)
-                print(rotten_orange, fresh_oranges, minute)
                 for fresh_orange in fresh_oranges:
                     r, c = fresh_orange
                     grid[r][c] = 2
                 next_minute.extend(fresh_oranges)
-            print(minute, next_minute)
             orange_queue = next_minute
             if not orange_queue:
                 break
