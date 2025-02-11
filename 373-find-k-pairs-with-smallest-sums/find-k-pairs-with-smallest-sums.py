@@ -3,7 +3,7 @@ class Solution:
         i = 0
         j = 0
         result = []
-        heap = [(nums1[0] + nums2[1], (0, 0))]
+        heap = [(nums1[0] + nums2[0], (0, 0))]
         checked = set()
         checked.add((0, 0))
         while len(result) < k:
@@ -16,10 +16,6 @@ class Solution:
             if j + 1 < len(nums2) and (i, j + 1) not in checked:
                 heappush(heap, (nums1[i] + nums2[j + 1], (i, j + 1)))
                 checked.add((i, j + 1))
-        return result
-            
-            
-
         return result
         
 
