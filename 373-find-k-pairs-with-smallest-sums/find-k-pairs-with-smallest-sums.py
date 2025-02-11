@@ -8,6 +8,7 @@ class Solution:
         checked.add((0, 0))
         while len(result) < k:
             val, (i, j) = heappop(heap)
+            print(val, nums1[i], nums2[j])
             result.append([nums1[i], nums2[j]])
             if i + 1 < len(nums1) and (i + 1, j) not in checked:
                 heappush(heap, (nums1[i + 1] + nums2[j], (i + 1, j)))
