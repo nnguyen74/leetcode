@@ -17,13 +17,16 @@ class Solution:
             emails = account[1:]
             isExist = False
             exist_dupe_users = set()
+            # Get all existing dupe users from new entries
             for email in emails:
                 if email in email_dict:
                     isExist = True
                     exist_dupe_users.add(email_dict[email])
             if isExist:
                 exist_dupe_users = list(exist_dupe_users)
+                # Designate an account to merget to
                 merged_user = exist_dupe_users[0]
+                # Merge all overlapping account to this new one
                 if len(exist_dupe_users) > 1:
                     for dupe_user in exist_dupe_users[1:]:
                         emails_dupe = user_dict[dupe_user][1]
@@ -37,4 +40,4 @@ class Solution:
                 for email in emails:
                     email_dict[email] = user_id
             user_id += 1
-        return [[v[0]] + sorted(list(v[1])) for v in user_dict.values()]
+        return [[v[0]] + sorted(v[1]) for v in user_dict.values()]
