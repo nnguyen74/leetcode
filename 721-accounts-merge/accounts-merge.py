@@ -23,7 +23,6 @@ class Solution:
                     isExist = True
                     exist_dupe_users.add(email_dict[email])
             if isExist:
-                emails = set(emails)
                 exist_dupe_users = list(exist_dupe_users)
                 # Designate an account to merget to
                 merged_user = exist_dupe_users[0]
@@ -31,7 +30,7 @@ class Solution:
                 if len(exist_dupe_users) > 1:
                     for dupe_user in exist_dupe_users[1:]:
                         emails_dupe = user_dict[dupe_user][1]
-                        emails |= emails_dupe
+                        user_dict[merged_user][1].update(emails_dupe)
                         del user_dict[dupe_user]
                 user_dict[merged_user][1].update(emails)
                 for email in user_dict[merged_user][1]:
