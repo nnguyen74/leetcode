@@ -3,10 +3,6 @@ class Solution:
         begin = 0
         end = len(nums) - 1
         while begin <= end:
-            if target == nums[begin]:
-                return begin
-            if target == nums[end]:
-                return end
             if target > nums[end] and target < nums[begin]:
                 return -1
             mid = (begin + end) // 2
