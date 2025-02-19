@@ -22,7 +22,6 @@ class Solution:
                 else:
                     end = mid - 1
             elif nums[mid] < nums[begin]:
-                print("pivot left")
                 if target > nums[mid] and target < nums[begin]:
                     begin = mid + 1
                 else:
