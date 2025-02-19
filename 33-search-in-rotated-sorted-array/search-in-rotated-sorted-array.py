@@ -3,8 +3,6 @@ class Solution:
         begin = 0
         end = len(nums) - 1
         while begin <= end:
-            if target > nums[end] and target < nums[begin]:
-                return -1
             mid = (begin + end) // 2
             if nums[mid] == target:
                 return mid
