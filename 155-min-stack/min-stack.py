@@ -18,7 +18,8 @@ class MinStack:
     def top(self) -> int:
         if self.minStack:
             return self.minStack[-1][0]
-
+    # The key is thinking each element of stack contains two things: its value
+    # and the minimum from that element to below. This is preserved using LIFO principle
     def getMin(self) -> int:
         if self.minStack:
             return self.minStack[-1][1]
