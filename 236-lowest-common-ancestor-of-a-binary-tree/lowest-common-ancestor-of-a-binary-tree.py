@@ -7,33 +7,21 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        global p_found, q_found, lca
-        p_found = False
-        q_found = False
-        lca = None
+        self.ans = None
 
-        def findNode(root, p, q):
-            global p_found, q_found, lca
-            if not root or lca:
+        def findNode(node):
+            if not node:
                 return False
-            self_check = False
-            if root.val == p.val:
-                p_found = True
-                self_check = True
-            if root.val == q.val:
-                q_found = True
-                self_check = True
-            if p_found and q_found:
-                return True
-            left_check = findNode(root.left, p, q)
-            right_check = findNode(root.right, p, q)
-            if (left_check and right_check) or (self_check and left_check) or (self_check and right_check):
-                lca = root
+            left_check = findNode(node.left)
+            right_check = findNode(node.right)
+            self_check = node == p or node == q
+            if left_check + right_check + self_check >= 2:
+                self.ans = node
             return self_check or left_check or right_check
 
-        findNode(root, p, q)
+        findNode(root)
         
-        return lca
+        return self.ans
 
     
         
