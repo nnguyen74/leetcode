@@ -2,13 +2,12 @@ from collections import Counter
 class Solution:
     def reorganizeString(self, s: str) -> str:
         counter = Counter(s)
-        result = []
+        result = ''
         for _ in range(len(s)):
             if len(counter) == 1:
                 letter, count = counter.most_common(1)[0]
                 if count == 1:
-                    result.append(letter)
-                    return ''.join(result)
+                    return result + letter
                 else:
                     return ""
             top_2_common_letters = counter.most_common(2)
@@ -16,10 +15,10 @@ class Solution:
                 letter = top_2_common_letters[1][0]
             else:
                 letter = top_2_common_letters[0][0]
-            result.append(letter)
+            result += letter
             counter[letter] -= 1
             if counter[letter] == 0:
                 del counter[letter]
-        return ''.join(result)
+        return result
 
         
