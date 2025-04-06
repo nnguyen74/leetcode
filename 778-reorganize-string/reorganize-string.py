@@ -5,7 +5,7 @@ class Solution:
         result = []
         for _ in range(len(s)):
             if len(counter) == 1:
-                letter, count = list(counter.items())[0]
+                letter, count = counter.most_common(1)[0]
                 if count == 1:
                     result.append(letter)
                     return ''.join(result)
