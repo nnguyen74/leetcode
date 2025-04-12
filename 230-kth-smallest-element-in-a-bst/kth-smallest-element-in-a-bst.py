@@ -11,6 +11,7 @@ class Solution:
         def dfs(root):
             if root == None:
                 return
+            print(root.val)
             if len(heap) == k:
                 check = heappop(heap)
                 if root.val < -check:
