@@ -7,18 +7,21 @@
 from heapq import heappush, heappop
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        heap = []
+        node_list = []
+        found = False
+        k_smallest = -1
         def dfs(root):
-            if root == None:
+            nonlocal found
+            nonlocal k_smallest
+            if root == None or found:
                 return
-            if len(heap) == k:
-                check = heap[0]
-                if root.val < -check:
-                    heappushpop(heap, -root.val)
-            else:
-                heappush(heap, -root.val)
             dfs(root.left)
+            node_list.append(root.val)
+            if len(node_list) == k:
+                found = True
+                k_smallest = root.val
+                return
             dfs(root.right)
         dfs(root)
-        return -heappop(heap)
+        return k_smallest
             
