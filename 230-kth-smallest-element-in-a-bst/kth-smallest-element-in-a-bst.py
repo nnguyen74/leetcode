@@ -12,11 +12,9 @@ class Solution:
             if root == None:
                 return
             if len(heap) == k:
-                check = heappop(heap)
+                check = heap[0]
                 if root.val < -check:
-                    heappush(heap, -root.val)
-                else:
-                    heappush(heap, check)
+                    heappushpop(heap, -root.val)
             else:
                 heappush(heap, -root.val)
             dfs(root.left)
