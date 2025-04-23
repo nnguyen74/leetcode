@@ -3,7 +3,7 @@ class Solution:
         sign_stack = []
         corresponding_symbol = {")": "(", "]": "[", "}": "{"}
         for symbol in s:
-            if symbol in {"(", "{", "["}:
+            if symbol not in corresponding_symbol:
                 sign_stack.append(symbol)
             else:
                 if not sign_stack:
