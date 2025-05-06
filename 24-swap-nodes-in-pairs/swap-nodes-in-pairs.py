@@ -11,10 +11,12 @@ class Solution:
         while head and head.next:
             first = head
             second = head.next
+
             prev.next = second
-            subsequent = second.next
+            first.next = second.next
             second.next = first
-            first.next = subsequent
-            head = subsequent
+
             prev = first
+            head = first.next
+            
         return dummy.next
