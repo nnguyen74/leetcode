@@ -10,12 +10,11 @@ from typing import Optional
 from collections import deque
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
+        # Create a node dictionary that matches node value with new node
         if not node:
             return node
-        visited = set()
         node_dict = dict()
-        queue = deque()
-        queue.append(node)
+        queue = deque([node])
         node_dict[node.val] = Node(node.val)
         while queue:
             old_node = queue.popleft()
